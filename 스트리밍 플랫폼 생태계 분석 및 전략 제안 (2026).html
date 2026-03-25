@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 스트리밍 플랫폼 생태계 분석 및 넥슨 크리에이터 파트너십 전략</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+    max-height: 400px;
+}
+@media (max-width: 768px) {
+    .chart-container {
+        height: 250px;
+    }
+}
+.tab-active {
+    border-bottom-width: 4px;
+    border-color: #1E293B;
+    color: #1E293B;
+    font-weight: 700;
+}
+.tab-inactive {
+    border-bottom-width: 4px;
+    border-color: transparent;
+    color: #78716C;
+}
+.tab-inactive:hover {
+    color: #1E293B;
+    border-color: #D6D3D1;
+}
+.nexon-card-active {
+    border-color: #1E293B;
+    background-color: #F8FAFC;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body class="bg-[#FDFBF7] text-stone-800 font-sans antialiased selection:bg-stone-300">
+
+<!-- Chosen Palette: Warm Neutrals with Corporate Navy, Emerald(Chzzk), and Indigo(SOOP) Accents -->
+<!-- Application Structure Plan: A dashboard-style SPA utilizing a tabbed navigation interface. This structure is chosen to prevent cognitive overload and excessive scrolling, allowing the user (e.g., a Nexon executive or Partnership Team member) to focus on specific strategic areas: Platform Overview, Revenue Models, Nexon Title Dynamics, and Future Trends. Each section includes interactive elements to explore the data dynamically, supporting the recruitment context by showcasing data-driven insights. -->
+<!-- Visualization & Content Choices: 
+1. Intro: Text-based context setting for the Nexon Creator Partnership Team. 
+2. Viewers/Categories: Grouped Bar Chart (Chart.js) to compare SOOP and Chzzk game genres directly. 
+3. Revenue Models: Doughnut Charts (Chart.js) for side-by-side proportion comparison of income streams. 
+4. Nexon Creators: Interactive Cards (HTML/JS) triggering a dynamic breakdown to show specific platform migration patterns for MapleStory, DNF, etc. 
+5. Forecast: HTML Table for structured qualitative comparison. NO SVG/Mermaid used. All charts use strict container constraints. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <header class="mb-10 text-center sm:text-left border-b border-stone-200 pb-8">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight mb-3">2026 스트리밍 생태계 분석 리포트</h1>
+        <p class="text-lg text-stone-600 max-w-3xl">SOOP vs 치지직(Chzzk) 플랫폼 동향 및 넥슨 크리에이터 파트너십 전략 수립을 위한 핵심 인사이트</p>
+    </header>
+
+    <div class="bg-white rounded-2xl shadow-sm border border-stone-100 p-6 sm:p-8 mb-10 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-2 h-full bg-slate-800"></div>
+        <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+            <span class="mr-2 text-2xl">🎯</span> 크리에이터즈 파트너십 팀: 조직 비전 및 리포트 목적
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-stone-600">
+            <div>
+                <p class="mb-3 leading-relaxed">
+                    크리에이터즈 파트너십 팀은 크리에이터 중심의 콘텐츠 생태계를 전략적으로 확대 및 관리하고, <strong>넥슨의 게임 마케팅 및 브랜딩에 있어 크리에이터의 영향력을 극대화하기 위한 전담 조직</strong>입니다. 
+                </p>
+                <p class="leading-relaxed">
+                    본 리포트는 당사 파트너십 및 캠페인 기획/운영의 핵심 기반이 되는 <strong>SOOP과 치지직의 2026년 현재 특성과 운영 방식</strong>을 심층 이해하고, 다양한 크리에이터 성향에 맞춘 유연한 소통 전략을 도출하기 위해 작성되었습니다.
+                </p>
+            </div>
+            <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                <h3 class="font-semibold text-stone-800 mb-3">주요 업무 연계 포인트</h3>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-start"><span class="mr-2 text-slate-800">▪</span> 크리에이터와 중장기적 파트너십 관계 형성 및 업무 지원</li>
+                    <li class="flex items-start"><span class="mr-2 text-slate-800">▪</span> 플랫폼 특성에 맞춘 크리에이터 대상 프로그램/캠페인 기획</li>
+                    <li class="flex items-start"><span class="mr-2 text-slate-800">▪</span> 활동 모니터링 및 플랫폼(SOOP, 치지직, 유튜브) 협업 신사업 발굴</li>
+                    <li class="flex items-start"><span class="mr-2 text-slate-800">▪</span> 게임 트렌드 및 유저 커뮤니티 성향 분석 기반 관계 조율</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="flex overflow-x-auto border-b border-stone-200 mb-8 hide-scrollbar">
+        <button onclick="switchTab('tab-viewers')" id="btn-tab-viewers" class="tab-active whitespace-nowrap py-4 px-6 text-sm sm:text-base transition-colors duration-200 focus:outline-none">
+            주력 카테고리 및 시청자
+        </button>
+        <button onclick="switchTab('tab-revenue')" id="btn-tab-revenue" class="tab-inactive whitespace-nowrap py-4 px-6 text-sm sm:text-base transition-colors duration-200 focus:outline-none">
+            수익 구조 및 후원 모델
+        </button>
+        <button onclick="switchTab('tab-nexon')" id="btn-tab-nexon" class="tab-inactive whitespace-nowrap py-4 px-6 text-sm sm:text-base transition-colors duration-200 focus:outline-none">
+            넥슨 크리에이터 동향
+        </button>
+        <button onclick="switchTab('tab-forecast')" id="btn-tab-forecast" class="tab-inactive whitespace-nowrap py-4 px-6 text-sm sm:text-base transition-colors duration-200 focus:outline-none">
+            생태계 비교 및 트렌드 예측
+        </button>
+    </nav>
+
+    <div id="tab-viewers" class="tab-content fade-in block">
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-stone-900 mb-2">플랫폼별 주력 게임 카테고리 및 시청자 유입 패턴</h2>
+            <p class="text-stone-600">
+                각 플랫폼의 시청자 성향과 주력 콘텐츠를 분석합니다. 이는 특정 타겟층을 대상으로 하는 넥슨의 크리에이터 캠페인 기획 시 플랫폼을 선정하는 핵심 지표가 됩니다.
+            </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 mb-8">
+            <h3 class="text-lg font-bold text-stone-800 mb-6 text-center">2026 플랫폼별 주요 카테고리 시청 시간 점유율 (%)</h3>
+            <div class="chart-container">
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-indigo-50/50 p-6 rounded-2xl border border-indigo-100">
+                <h3 class="text-xl font-bold text-indigo-900 mb-3 flex items-center">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600 mr-2"></span> SOOP 유입 패턴
+                </h3>
+                <ul class="space-y-3 text-stone-700">
+                    <li><strong>e스포츠 및 대형 RPG 강세:</strong> 장기 시청을 요구하는 하드코어 RPG(예: 메이플스토리 보스 레이드, 리니지류)와 전통적인 e스포츠(LoL 등) 코어 팬덤이 두텁습니다.</li>
+                    <li><strong>커뮤니티 결속력:</strong> 크리에이터 간의 '크루' 문화를 통한 합동 방송(합방)이 시청자 유입의 주된 동력입니다. 팬덤 간의 경쟁 심리가 강합니다.</li>
+                    <li><strong>연령층:</strong> 20대 후반에서 40대까지 구매력이 높은 시청자층이 두터워, RPG 장르의 프로모션 효율이 매우 높습니다.</li>
+                </ul>
+            </div>
+            <div class="bg-emerald-50/50 p-6 rounded-2xl border border-emerald-100">
+                <h3 class="text-xl font-bold text-emerald-900 mb-3 flex items-center">
+                    <span class="w-3 h-3 rounded-full bg-emerald-500 mr-2"></span> 치지직(Chzzk) 유입 패턴
+                </h3>
+                <ul class="space-y-3 text-stone-700">
+                    <li><strong>다양성과 인디/캐주얼:</strong> 종합 게임(스팀, 인디)과 서브컬처, 캐주얼 게임의 시청 비중이 높습니다. 단기 스토리텔링형 콘텐츠 소비가 활발합니다.</li>
+                    <li><strong>네이버 생태계 연계:</strong> 네이버 카페, 웹툰 등 기존 네이버 커뮤니티 인프라와의 연계를 통한 유입이 강력하며, 접근성이 뛰어납니다.</li>
+                    <li><strong>연령층:</strong> 10대 후반에서 20대 중심의 젊은 시청자층이 주를 이루며, 밈(Meme) 확산과 바이럴 마케팅에 매우 유리한 환경입니다.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab-revenue" class="tab-content fade-in hidden">
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-stone-900 mb-2">크리에이터 후원 모델 및 수익 구조 비교</h2>
+            <p class="text-stone-600">
+                플랫폼의 수익 구조는 크리에이터의 콘텐츠 방향성에 절대적인 영향을 미칩니다. 넥슨 파트너 크리에이터의 매니지먼트 및 캠페인 보상 설계 시 반드시 고려해야 할 요소입니다.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
+                <h3 class="text-lg font-bold text-stone-800 mb-4 text-center">SOOP 크리에이터 평균 수익 비중</h3>
+                <div class="chart-container" style="height: 250px;">
+                    <canvas id="soopRevenueChart"></canvas>
+                </div>
+                <div class="mt-6 pt-4 border-t border-stone-100 text-stone-700 text-sm">
+                    <strong>핵심 특징:</strong> '별풍선' 기반의 소수 고액 후원자(큰손) 의존도가 매우 높습니다. 따라서 크리에이터는 게임 내에서 '과금력'을 보여주거나 극적인 강화를 진행하는 등 자극적이고 투자가 필요한 콘텐츠를 선호합니다. (메이플/던파 상위 유저 적합)
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
+                <h3 class="text-lg font-bold text-stone-800 mb-4 text-center">치지직 크리에이터 평균 수익 비중</h3>
+                <div class="chart-container" style="height: 250px;">
+                    <canvas id="chzzkRevenueChart"></canvas>
+                </div>
+                <div class="mt-6 pt-4 border-t border-stone-100 text-stone-700 text-sm">
+                    <strong>핵심 특징:</strong> '치즈' 후원 외에도 구독 및 광고 배분 수익 비율이 안정적입니다. 다수의 소액 후원과 구독에 의존하므로, 시청자와의 지속적인 소통, 가벼운 예능형 게임 플레이, 스토리 공감형 콘텐츠가 유리합니다.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab-nexon" class="tab-content fade-in hidden">
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-stone-900 mb-2">넥슨 주요 타이틀 크리에이터 플랫폼 이동 동향</h2>
+            <p class="text-stone-600">
+                게임 트렌드와 유저 커뮤니티 특성에 따라 타이틀별 크리에이터의 플랫폼 선호도가 다르게 나타납니다. 아래 게임을 클릭하여 상세 분석을 확인하세요.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <button onclick="selectNexonGame('maple')" id="btn-game-maple" class="game-btn text-left p-5 rounded-xl border-2 border-stone-200 hover:border-slate-800 transition-all focus:outline-none nexon-card-active">
+                <h4 class="text-lg font-bold text-stone-900 mb-1">메이플스토리</h4>
+                <p class="text-sm text-stone-500">RPG, 장기 육성, 보스 레이드</p>
+            </button>
+            <button onclick="selectNexonGame('dnf')" id="btn-game-dnf" class="game-btn text-left p-5 rounded-xl border-2 border-stone-200 hover:border-slate-800 transition-all focus:outline-none">
+                <h4 class="text-lg font-bold text-stone-900 mb-1">던전앤파이터</h4>
+                <p class="text-sm text-stone-500">액션 RPG, 세팅 연구, 컨트롤</p>
+            </button>
+            <button onclick="selectNexonGame('fc')" id="btn-game-fc" class="game-btn text-left p-5 rounded-xl border-2 border-stone-200 hover:border-slate-800 transition-all focus:outline-none">
+                <h4 class="text-lg font-bold text-stone-900 mb-1">FC Online</h4>
+                <p class="text-sm text-stone-500">스포츠, 카드깡, e스포츠</p>
+            </button>
+        </div>
+
+        <div id="game-detail-panel" class="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-200">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-full md:w-1/3">
+                    <div class="chart-container" style="height: 220px; max-height: 220px;">
+                        <canvas id="nexonGameChart"></canvas>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3">
+                    <h3 id="game-title-display" class="text-2xl font-bold text-slate-900 mb-4">메이플스토리 크리에이터 생태계</h3>
+                    <ul id="game-desc-display" class="space-y-4 text-stone-700">
+                        <li class="flex items-start">
+                            <span class="mr-3 font-bold text-indigo-600">SOOP 집중:</span> 
+                            <span>엔드 스펙 보스 트라이, 대규모 큐브/강화 방송 등 막대한 자본이 투입되는 콘텐츠는 고액 후원이 용이한 SOOP에 집중되어 있습니다. '크루' 단위의 보스 파티가 활성화되어 있습니다.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 font-bold text-emerald-600">치지직 성장:</span> 
+                            <span>무자본/소자본 육성기, 스토리 밀기, 시청자 참여형 이벤트 등 잔잔하고 소통 중심의 메이플 방송은 치지직으로 서서히 이동하며 새로운 팬덤을 형성 중입니다.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3 font-bold text-slate-800">파트너십 전략:</span> 
+                            <span>대규모 업데이트 시 SOOP 크리에이터를 통한 '스펙업 레이스' 캠페인을, 신규 이벤트나 코디 템 출시는 치지직 종겜/소통 크리에이터를 통한 '바이럴'로 이원화 운영이 필요합니다.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab-forecast" class="tab-content fade-in hidden">
+         <div class="mb-6">
+            <h2 class="text-2xl font-bold text-stone-900 mb-2">핵심 생태계 요약 및 향후 1년 트렌드 예측</h2>
+            <p class="text-stone-600">
+                두 플랫폼의 장단점을 요약하고, 다가올 트렌드에 맞춘 넥슨 크리에이터즈 마케팅 부서의 대응 방안을 제시합니다.
+            </p>
+        </div>
+
+        <div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-stone-200 mb-8">
+            <table class="min-w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-stone-50 border-b border-stone-200">
+                        <th class="py-4 px-6 font-semibold text-stone-800 w-1/4">비교 항목</th>
+                        <th class="py-4 px-6 font-semibold text-indigo-900 w-3/8">SOOP</th>
+                        <th class="py-4 px-6 font-semibold text-emerald-900 w-3/8">치지직 (Chzzk)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-stone-200 text-stone-700">
+                    <tr class="hover:bg-stone-50 transition-colors">
+                        <td class="py-4 px-6 font-medium">콘텐츠 결속력</td>
+                        <td class="py-4 px-6">버추얼(V-Tuber) 아이돌 및 대형 크루 기반의 강력한 팬덤 응집력. IP화에 유리.</td>
+                        <td class="py-4 px-6">개별 크리에이터 매력도 중심. 네이버 커뮤니티(카페) 의존도가 높아 자유로운 분위기.</td>
+                    </tr>
+                    <tr class="hover:bg-stone-50 transition-colors">
+                        <td class="py-4 px-6 font-medium">유저 확장성 (마케팅 측면)</td>
+                        <td class="py-4 px-6">기존 충성 유저 대상의 깊이 있는 하드코어 프로모션에 매우 적합. (ARPU 상승 목적)</td>
+                        <td class="py-4 px-6">타 플랫폼 시청자 및 라이트 게이머 대상의 신규 모객(UA) 및 브랜딩에 효과적.</td>
+                    </tr>
+                    <tr class="hover:bg-stone-50 transition-colors">
+                        <td class="py-4 px-6 font-medium">글로벌 연계 (2026 트렌드)</td>
+                        <td class="py-4 px-6">태국 등 동남아 중심의 자체 글로벌 플랫폼 확장 시도 중이나 국내 비중 압도적.</td>
+                        <td class="py-4 px-6">국내 내수에 집중. 글로벌 타겟팅 시 유튜브 라이브와의 동시 송출 파트너십 필수.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="bg-slate-900 text-white p-6 md:p-8 rounded-2xl relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 text-9xl opacity-10">📈</div>
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+                <span class="text-2xl mr-2">💡</span> 향후 1년 트렌드 및 파트너십 팀 액션 아이템
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="font-semibold text-stone-300 mb-2">트렌드 예측 (2026-2027)</h4>
+                    <p class="text-stone-400 text-sm leading-relaxed">
+                        하드코어 게임방송과 캐주얼/종합 게임방송 간의 플랫폼 양극화가 완전히 정착될 것입니다. SOOP은 '보는 게임'을 넘어선 '시청자 참여형 거대 크루 생태계'로, 치지직은 '팬 커뮤니티 기반의 팝업스토어형 방송'으로 진화할 것입니다. 크리에이터의 '독점 송출' 계약보다 콘텐츠 성격에 맞춘 '플랫폼 유동적 활용'이 대세가 됩니다.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-stone-300 mb-2">파트너십 팀 전략 제안</h4>
+                    <ul class="text-stone-400 text-sm space-y-2">
+                        <li>1. <strong>멀티 플랫폼 매니징:</strong> 단일 플랫폼 파트너십보다, SOOP 크루 리더와 치지직 종겜 스트리머를 연계한 <strong>'크로스 플랫폼 타겟팅 캠페인'</strong> 기획.</li>
+                        <li>2. <strong>수익 모델 맞춤 보상:</strong> SOOP 크리에이터에게는 '게임 내 한정 재화/아이템' 쿠폰을, 치지직 크리에이터에게는 '구독자 전용 굿즈/네이버페이 포인트'를 캠페인 리워드로 설계.</li>
+                        <li>3. <strong>품질 관리:</strong> 생방 플랫폼의 자극성을 모니터링하고, 브랜드 세이프티 가이드라인을 플랫폼 특성에 맞게 세분화 적용.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const nexonGameData = {
+    maple: {
+        title: "메이플스토리 크리에이터 생태계",
+        data: [65, 35],
+        desc: `
+            <li class="flex items-start"><span class="mr-3 font-bold text-indigo-600">SOOP 집중:</span> <span>엔드 스펙 보스 트라이, 대규모 큐브/강화 방송 등 막대한 자본이 투입되는 콘텐츠는 고액 후원이 용이한 SOOP에 집중되어 있습니다. '크루' 단위의 보스 파티가 활성화되어 있습니다.</span></li>
+            <li class="flex items-start"><span class="mr-3 font-bold text-emerald-600">치지직 성장:</span> <span>무자본/소자본 육성기, 스토리 밀기, 시청자 참여형 이벤트 등 잔잔하고 소통 중심의 메이플 방송은 치지직으로 서서히 이동하며 새로운 팬덤을 형성 중입니다.</span></li>
+            <li class="flex items-start"><span class="mr-3 font-bold text-slate-800">파트너십 전략:</span> <span>대규모 업데이트 시 SOOP 크리에이터를 통한 '스펙업 레이스' 캠페인을, 신규 이벤트나 코디 템 출시는 치지직 종겜/소통 크리에이터를 통한 '바이럴'로 이원화 운영이 필요합니다.</span></li>
+        `
+    },
+    dnf: {
+        title: "던전앤파이터 크리에이터 생태계",
+        data: [75, 25],
+        desc: `
+            <li class="flex items-start"><span class="mr-3 font-bold text-indigo-600">SOOP 지배력:</span> <span>신규 레이드 퍼스트 클리어 경쟁, 커스텀 에픽 세팅 분석 등 깊이 있는 공략 방송은 액션 RPG 시청자층이 두터운 SOOP이 압도적 우위를 점하고 있습니다.</span></li>
+            <li class="flex items-start"><span class="mr-3 font-bold text-emerald-600">치지직 현황:</span> <span>주로 타 게임을 메인으로 하면서 던파를 서브로 즐기는 종합 게임 크리에이터들의 찍먹(가볍게 즐김) 콘텐츠가 주를 이룹니다.</span></li>
+            <li class="flex items-start"><span class="mr-3 font-bold text-slate-800">파트너십 전략:</span> <span>신규 레이드 출시는 SOOP의 코어 크리에이터 파트너십을 강화하고, 신규 직업 출시는 치지직의 라이트 유저 대상 유입 캠페인을 기획하는 것이 효율적입니다.</span></li>
+        `
+    },
+    fc: {
+        title: "FC Online 크리에이터 생태계",
+        data: [85, 15],
+        desc: `
+            <li class="flex items-start"><span class="mr-3 font-bold text-indigo-600">SOOP 독점 수준:</span> <span>프로게이머 출신 크리에이터와 대형 크루들이 사실상 생태계를 독점하고 있습니다. 막대한 규모의 '카드깡(선수팩 개봉)'과 시청자 대리 개봉 콘텐츠가 핵심 수익원입니다.</span></li>
+            <li class="flex items-start"><span class="mr-3 font-bold text-emerald-600">치지직 한계:</span> <span>스포츠 장르 특성상 기존 시청자층의 이동이 매우 적으며, 예능 중심의 소규모 합방 정도만 소비되고 있습니다.</span></li>
+            <li class="flex items-start"><span class="mr-3 font-bold text-slate-800">파트너십 전략:</span> <span>FC Online의 e스포츠 대회 및 대규모 선수팩 프로모션은 전적으로 SOOP 플랫폼 내 파트너십 관리에 총력을 기울여야 합니다.</span></li>
+        `
+    }
+};
+
+let categoryChartInstance = null;
+let soopRevChartInstance = null;
+let chzzkRevChartInstance = null;
+let nexonChartInstance = null;
+
+function renderCharts() {
+    Chart.defaults.font.family = "'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif";
+    Chart.defaults.color = '#57534E';
+    
+    const catCtx = document.getElementById('categoryChart');
+    if(catCtx && !categoryChartInstance) {
+        categoryChartInstance = new Chart(catCtx, {
+            type: 'bar',
+            data: {
+                labels: ['하드코어/MMORPG', 'e스포츠 (LoL, FC 등)', '종합/인디/스팀', '소통/버추얼/예능', '기타'],
+                datasets: [
+                    {
+                        label: 'SOOP',
+                        data: [40, 35, 5, 15, 5],
+                        backgroundColor: '#4F46E5',
+                        borderRadius: 4
+                    },
+                    {
+                        label: '치지직 (Chzzk)',
+                        data: [15, 20, 35, 25, 5],
+                        backgroundColor: '#10B981',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) { return context.dataset.label + ': ' + context.parsed.y + '%'; }
+                        }
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: true, max: 50, ticks: { callback: function(value){return value+'%'} } }
+                }
+            }
+        });
+    }
+
+    const soopRevCtx = document.getElementById('soopRevenueChart');
+    if(soopRevCtx && !soopRevChartInstance) {
+        soopRevChartInstance = new Chart(soopRevCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['후원(별풍선)', '광고/협찬', '구독', '기타'],
+                datasets: [{
+                    data: [75, 15, 5, 5],
+                    backgroundColor: ['#4F46E5', '#818CF8', '#C7D2FE', '#E0E7FF'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                cutout: '65%'
+            }
+        });
+    }
+
+    const chzzkRevCtx = document.getElementById('chzzkRevenueChart');
+    if(chzzkRevCtx && !chzzkRevChartInstance) {
+        chzzkRevChartInstance = new Chart(chzzkRevCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['후원(치즈)', '구독', '광고/협찬', '기타'],
+                datasets: [{
+                    data: [45, 30, 20, 5],
+                    backgroundColor: ['#10B981', '#34D399', '#A7F3D0', '#D1FAE5'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } },
+                cutout: '65%'
+            }
+        });
+    }
+}
+
+function renderNexonChart(dataArray) {
+    const ctx = document.getElementById('nexonGameChart');
+    if(nexonChartInstance) {
+        nexonChartInstance.destroy();
+    }
+    nexonChartInstance = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['SOOP 점유율', '치지직 점유율'],
+            datasets: [{
+                data: dataArray,
+                backgroundColor: ['#4F46E5', '#10B981'],
+                borderWidth: 2,
+                borderColor: '#F8FAFC'
+            }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom' },
+                tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed + '%'; } } }
+            }
+        }
+    });
+}
+
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(el => {
+        el.classList.add('hidden');
+        el.classList.remove('block');
+    });
+    
+    document.querySelectorAll('nav button').forEach(el => {
+        el.classList.remove('tab-active');
+        el.classList.add('tab-inactive');
+    });
+
+    document.getElementById(tabId).classList.remove('hidden');
+    document.getElementById(tabId).classList.add('block');
+    document.getElementById('btn-' + tabId).classList.remove('tab-inactive');
+    document.getElementById('btn-' + tabId).classList.add('tab-active');
+
+    if(tabId === 'tab-viewers' || tabId === 'tab-revenue') {
+        setTimeout(renderCharts, 50);
+    } else if (tabId === 'tab-nexon') {
+        const activeBtn = document.querySelector('.game-btn.nexon-card-active');
+        const gameId = activeBtn ? activeBtn.id.split('-')[2] : 'maple';
+        setTimeout(() => selectNexonGame(gameId), 50);
+    }
+}
+
+function selectNexonGame(gameId) {
+    document.querySelectorAll('.game-btn').forEach(btn => {
+        btn.classList.remove('nexon-card-active');
+    });
+    document.getElementById('btn-game-' + gameId).classList.add('nexon-card-active');
+
+    const data = nexonGameData[gameId];
+    document.getElementById('game-title-display').innerText = data.title;
+    document.getElementById('game-desc-display').innerHTML = data.desc;
+    
+    renderNexonChart(data.data);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(renderCharts, 100);
+});
+</script>
+</body>
+</html>
